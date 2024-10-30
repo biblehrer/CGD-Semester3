@@ -1,0 +1,34 @@
+{
+    "name": "Complex",
+    "maps": [
+        {
+            "name": "Main",
+            "id": "150519da-f283-4e60-b65d-ae5694ce8f24",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "8cd1cc8c-9186-4fd4-abe6-d32c22a66f0d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c9fd44ca-91bd-4d5f-865b-890764dac95b",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
