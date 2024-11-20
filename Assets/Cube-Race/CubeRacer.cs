@@ -1,13 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CubeRacer : MonoBehaviour
 {
     public int type;
-    private float speed = 50;
+    private float speed = 3;
+    private Rigidbody rb;
+    private NavMeshAgent agent;
 
-    // Update is called once per frame
+    private NavMeshPath path;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        if (type == 5)
+        {
+            agent = GetComponent<NavMeshAgent>();
+
+            path = new NavMeshPath();
+            agent.CalculatePath(new Vector3(-3,0 , 3), path);
+            StartCoroutine(WaitForStart());
+
+        }        
+    }
+
+    IEnumerator WaitForStart()
+    {
+        yield return new WaitForSeconds(3);
+        agent.SetPath(path);
+    }
+
     void Update()
     {
        switch (type)
@@ -45,21 +69,17 @@ public class CubeRacer : MonoBehaviour
 
     public void Move2()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.AddForce(new Vector3(0, 0, 50) * Time.deltaTime * speed);
+        rb.AddForce(new Vector3(0, 0, 50) * Time.deltaTime * speed);
     }
 
     public void Move3()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity += new Vector3(0, 0, 1) * Time.deltaTime * speed;
+        rb.velocity += new Vector3(0, 0, 1) * Time.deltaTime * speed;
     }
 
     public void Move4()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = new Vector3(0, 0, 1) *  speed;
-        Debug.Log(rigidbody.velocity);
+        rb.velocity = new Vector3(0, 0, 1) *  speed;
     }
 
 
